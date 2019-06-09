@@ -1,0 +1,11 @@
+input.ng-pristine {
+    border-right: 10px solid blueviolet;
+}
+
+input.ng-touched.ng-invalid {
+    border-right: 10px solid red;
+}
+
+input.ng-touched.ng-valid {
+    border-right: 10px solid green;
+}

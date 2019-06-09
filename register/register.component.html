@@ -1,0 +1,64 @@
+<div class="container mt-3">
+  <div class="row justify-content-md-center">
+    <div class="col-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <div class="card-title">
+            <h3 style="color : rgb(15, 113, 224)">Register</h3>
+          </div>
+          <form (ngSubmit)="signup()" name=myform #register=ngForm>
+            <div class="form-group">
+              <input type="text" class="form-control" pattern="[a-zA-Z]{3,20}" [(ngModel)]="user.firstName"
+                name="firstName" placeholder="Enter Your First Name" title="Mayuresh" #fName=ngModel required>
+              <span class="alert-danger" [hidden]="fName.untouched || fName.valid">
+                Enter Valid First Name
+              </span>
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" pattern="[a-zA-Z]{3,20}" [(ngModel)]="user.lastName"
+                name="lastName" placeholder="Enter Your Last Name" title="Shinde" #LName=ngModel required>
+              <span class="alert-danger" [hidden]="LName.untouched || LName.valid">
+                Enter Valid Last Name
+              </span>
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" required pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+                [(ngModel)]="user.email" name="email" placeholder="Enter Your Email-Id" title="abc@gmail.com"
+                #emailID=ngModel (blur)="checkEmail(emailID.value)" required>
+              <span class="alert-danger" [hidden]="emailID.untouched || emailID.valid">
+                Enter Valid Email
+              </span>
+              <span class="alert-danger" *ngIf="validEmail">
+                Email-Id already registered
+              </span>
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" required pattern="[0-9]{10}" [(ngModel)]="user.mobile"
+                name="mobile" placeholder="Enter Your Mobile Number" title="9167968584" #mobNo=ngModel 
+                (blur)="checkMobile(mobNo.value)" required>
+              <span class="alert-danger" [hidden]="mobNo.untouched || mobNo.valid">
+                Enter Valid Mobile Number
+              </span>
+              <span class="alert-danger" *ngIf="validMobile">
+                Mobile No. already registered
+              </span>
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" [(ngModel)]="user.password" name="pass"
+                pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{6,}"
+                placeholder="Enter Your password" title="abc@gmail.com" #passID=ngModel required>
+              <span class="alert-danger" [hidden]="passID.untouched || passID.valid">
+                Enter valid Password
+              </span>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Register" style="width:30%"
+              [disabled]="register.invalid">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
